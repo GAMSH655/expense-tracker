@@ -1,0 +1,85 @@
+  const expenseName = document.querySelector("#expenseName")
+  console.log(expenseName.value)
+  const expenseAmount = document.querySelector("#expenseAmount")
+  const expenseCategory = document.querySelector("#expenseCategory")
+  const addExpenseBtn = document.querySelector("#addExpenseBtn")
+  const  totalExpense= document.querySelector("#totalExpense ")
+  const expenseAmountWarning  = document.querySelector(".expenseAmountWarning")
+ const expenseNameWarning  = document.querySelector(".expenseNameWarning")
+ const expenseCategoryWarning  = document.querySelector(".expenseCategoryWarning")
+  const expenseArray =  []
+
+
+  addExpenseBtn.addEventListener("click", function(){
+      const enteredexpenseName = expenseName.value.trim()
+      const enteredExpenseAmount = expenseAmount.value.trim()
+      const entredExpenseCategory = expenseCategory.value.trim()
+    
+   
+
+     
+      const expenseObject = {
+         id: Date.now(),
+         name: enteredexpenseName,
+         amount: Number(enteredExpenseAmount),
+         category:  entredExpenseCategory,
+         date: new Date().toLocaleDateString(),
+         time: new Date().toLocaleTimeString()
+     }
+     expenseArray.push(expenseObject)
+     console.log(expenseArray)
+
+    
+    const expenseDiv =  document.createElement("div")
+     expenseDiv.classList.add("expenseDiv")
+
+     const expenseText = document.createElement("p")
+     expenseText.classList.add("expenseText")
+
+     const deleteExpense = document.createElement("button")
+      deleteExpense.classList.add("deleteExpense")
+      deleteExpense.textContent = "delete expense"
+    
+      expenseDiv.appendChild(expenseText)
+      expenseDiv.appendChild(deleteExpense)
+      expenseContainer.append(expenseDiv)
+    
+      expenseText.textContent = `Expense ${expenseObject.name}
+    Amount:${expenseObject.amount}
+    Category: ${expenseObject.category},
+    Date : ${expenseObject.date}
+    Time : ${expenseObject.time}
+   `
+
+   deleteExpense.addEventListener("click", function(expenseID){
+       for(let i=0; i<expenseArray.length; i++){
+        expenseContainer.textContent = ""
+        console.log(expenseID)
+       }
+    })
+   
+     let totalExpenses = 0;
+
+ for (let i = 0; i < expenseArray.length; i++) {
+     totalExpenses += expenseArray[i].amount;
+ }
+ totalExpense.textContent = `₦${totalExpenses.toLocaleString()}`; 
+
+ if( enteredexpenseName === ""){
+     expenseNameWarning.textContent = "Please select a category.";
+     return;
+
+ }
+ if (enteredExpenseAmount === "" || Number(enteredExpenseAmount) <= 0) {
+      expenseAmountWarning.textContent = "Please select a category.";
+     return;}
+
+      if (entredExpenseCategory === "") {
+           expenseCategoryWarning.textContent = "Please select a category.";
+         return;
+     }
+
+ })
+
+
+

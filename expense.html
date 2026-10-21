@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="expense.css">
+</head>
+<body>
+
+    <main class="container">
+
+        <h1>Expense Tracker</h1>
+        <p class="subtitle">Track your daily expenses</p>
+
+        <section class="expense-form">
+
+            <div class="input-group">
+                <label for="expenseName">Expense Name</label>
+                <input
+                    type="text"
+                    id="expenseName"
+                    placeholder="e.g. Food"
+                >
+                <span class="expenseNameWarning"></span>
+            </div>
+
+            <div class="input-group">
+                <label for="expenseAmount">Amount</label>
+                <input
+                    type="number"
+                    id="expenseAmount"
+                    placeholder="e.g. 5000"
+                >
+                 <span class="expenseAmountWarning"></span>
+            </div>
+    
+            <div class="input-group">
+                <label for="expenseCategory">Category</label>
+                <select id="expenseCategory">
+                    <option value="">Select category</option>
+                    <option value="Food">Food</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Bills">Bills</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <span class="expenseCategoryWarning"></span>
+            <button id="addExpenseBtn">Add Expense</button>
+
+           
+
+        </section>
+
+        <section class="expense-section">
+
+            <h2>My Expenses</h2>
+
+            <div id="expenseContainer">
+                <p class="empty-message">No expenses added yet.</p>
+            </div>
+
+        </section>
+
+        <section class="summary">
+
+            <div class="summary-box">
+                <span class="totalExpenses">Total Expenses</span>
+                <strong id="totalExpense"></strong>
+            </div>
+             
+            <button id="clearExpenses">Clear All</button>
+
+        </section>
+
+    </main>
+
+    <script src="expense.js"></script>
+</body>
+</html>
